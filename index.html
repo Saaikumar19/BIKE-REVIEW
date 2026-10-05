@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MotoReview India - Find your perfect bike in India. Real-world mileage, on-road prices, expert road-test reviews, and side-by-side specs comparison.">
+  <meta name="keywords" content="Bike Reviews India, On Road Bike Price, Best Mileage Bikes, Compare Bikes, Yamaha R15 V4, Royal Enfield Classic 350, Honda Shine, TVS Apache RTR 160">
+  <meta name="author" content="MotoReview India">
+
+  <title>MotoReview India | Bike Reviews, On-Road Prices & Mileage in India</title>
+
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Core Theme Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Sticky Top Header & Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <!-- Brand Logo -->
+      <a href="#/" class="brand-logo" aria-label="MotoReview India Home">
+        <div class="logo-badge">🏍️</div>
+        <div class="brand-text">
+          MotoReview<span>India</span>
+          <span class="country-tag">IN</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <a href="#/" class="nav-link active">Home</a>
+        <a href="#/bikes" class="nav-link">All Bikes</a>
+        <a href="#/reviews" class="nav-link">Reviews</a>
+        <a href="#/compare" class="nav-link compare-nav-pill">
+          ⚖️ Compare <span class="badge-count" id="nav-compare-count">0</span>
+        </a>
+        <a href="#/mileage" class="nav-link">Best Mileage</a>
+        <a href="#/budget" class="nav-link">Budget Bikes</a>
+        <a href="#/latest" class="nav-link">Latest</a>
+        <a href="#/brands" class="nav-link">Brands</a>
+        <a href="#/about" class="nav-link">About</a>
+        <a href="#/contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Nav Action Controls -->
+      <div class="nav-actions">
+        <!-- Search Trigger Button -->
+        <button id="open-search-modal-btn" class="btn-icon" title="Search Bikes (Ctrl + K)" aria-label="Search Motorcycles">
+          🔍
+        </button>
+
+        <!-- Dark / Light Theme Toggle -->
+        <button id="theme-toggle-btn" class="btn-icon" title="Toggle Dark/Light Mode" aria-label="Toggle Theme">
+          <span id="theme-toggle-icon">☀️</span>
+        </button>
+
+        <!-- Mobile Menu Trigger -->
+        <button id="mobile-menu-btn" class="btn-icon mobile-menu-btn" aria-label="Open Navigation Menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Offcanvas Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer" role="dialog" aria-modal="true">
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <div class="brand-logo" style="font-size: 1.2rem;">
+          <div class="logo-badge" style="width: 2rem; height: 2rem; font-size: 0.95rem;">🏍️</div>
+          <div class="brand-text">MotoReview<span>India</span></div>
+        </div>
+        <button id="close-drawer-btn" class="btn-icon" style="width: 2rem; height: 2rem;" aria-label="Close menu">✕</button>
+      </div>
+
+      <nav class="drawer-links">
+        <a href="#/" class="drawer-link active">🏠 Home</a>
+        <a href="#/bikes" class="drawer-link">🏍️ All Bikes</a>
+        <a href="#/reviews" class="drawer-link">⭐ Bike Reviews</a>
+        <a href="#/compare" class="drawer-link">⚖️ Compare Bikes</a>
+        <a href="#/mileage" class="drawer-link">⛽ Best Mileage</a>
+        <a href="#/budget" class="drawer-link">💰 Best Budget Bikes</a>
+        <a href="#/latest" class="drawer-link">🔥 Latest Launches</a>
+        <a href="#/brands" class="drawer-link">🏭 Bike Brands</a>
+        <a href="#/about" class="drawer-link">ℹ️ About Us</a>
+        <a href="#/contact" class="drawer-link">📞 Contact Us</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Dynamic SPA Page Container -->
+  <main id="app-content">
+    <!-- View rendered by js/app.js router -->
+  </main>
+
+  <!-- Bottom Floating Compare Dock -->
+  <div class="floating-compare-tray" id="floating-compare-tray">
+    <div style="display: flex; flex-direction: column;">
+      <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-red); font-weight: 800; letter-spacing: 0.05em;">Comparison Dock</span>
+      <span style="font-size: 0.88rem; font-weight: 700; color: var(--text-primary);">Compare Selected Bikes</span>
+    </div>
+    <div class="tray-items-preview" id="tray-items-container">
+      <!-- Dynamic thumbs injected by app.js -->
+    </div>
+    <div style="display: flex; gap: 0.5rem; align-items: center;">
+      <a href="#/compare" class="btn-primary" style="padding: 0.55rem 1.1rem; font-size: 0.85rem;">
+        Compare Now ⚖️
+      </a>
+      <button onclick="MotoReview.clearCompare()" style="color: var(--text-muted); font-size: 0.8rem; padding: 0.4rem;" title="Clear comparison">✕</button>
+    </div>
+  </div>
+
+  <!-- Search Modal (Ctrl + K) -->
+  <div class="search-modal-backdrop" id="search-modal" role="dialog" aria-modal="true">
+    <div class="search-modal-container">
+      <div class="search-modal-input-row">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-modal-input" class="search-modal-input" placeholder="Search any motorcycle, brand, engine or category..." autocomplete="off">
+        <button id="close-search-modal-btn" class="search-modal-close-btn">ESC</button>
+      </div>
+      <div class="search-modal-results" id="search-modal-results">
+        <!-- Results injected by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Toast Notification -->
+  <div class="toast-notification" id="toast-notification">
+    <span>🔔</span>
+    <span class="toast-message">Notification message</span>
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <!-- Brand & Mission Column -->
+        <div class="footer-brand-col">
+          <div class="brand-logo">
+            <div class="logo-badge">🏍️</div>
+            <div class="brand-text">MotoReview<span>India</span></div>
+          </div>
+          <p class="footer-brand-bio">
+            India's most trusted motorcycle review and on-road pricing resource. Providing authentic mileage road tests, technical spec breakdowns, and head-to-head motorcycle comparisons.
+          </p>
+          <div style="margin-top: 1.25rem; display: flex; gap: 0.75rem; font-size: 1.25rem;">
+            <span title="Automotive Excellence">🏆</span>
+            <span title="Indian RTO Network">🇮🇳</span>
+            <span title="Dyno & Track Tested">⚡</span>
+            <span title="Pure Motorcycling">🏁</span>
+          </div>
+        </div>
+
+        <!-- Quick Explore Links -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Explore Bikes</h4>
+          <ul class="footer-links-list">
+            <li><a href="#/bikes">All Motorcycles</a></li>
+            <li><a href="#/mileage">Best Mileage Bikes</a></li>
+            <li><a href="#/budget/under-1lakh">Bikes Under ₹1 Lakh</a></li>
+            <li><a href="#/budget/under-1-5lakh">Bikes Under ₹1.5 Lakh</a></li>
+            <li><a href="#/budget/under-2lakh">Bikes Under ₹2 Lakh</a></li>
+            <li><a href="#/latest">Latest Bike Launches</a></li>
+          </ul>
+        </div>
+
+        <!-- Popular Brands Links -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Popular Brands</h4>
+          <ul class="footer-links-list">
+            <li><a href="#/brands/yamaha">Yamaha Bikes</a></li>
+            <li><a href="#/brands/royal-enfield">Royal Enfield Bikes</a></li>
+            <li><a href="#/brands/honda">Honda Motorcycles</a></li>
+            <li><a href="#/brands/tvs">TVS Racing Bikes</a></li>
+            <li><a href="#/brands/bajaj">Bajaj Pulsar Range</a></li>
+            <li><a href="#/brands/ktm">KTM Duke & RC</a></li>
+            <li><a href="#/brands/suzuki">Suzuki Gixxer Range</a></li>
+          </ul>
+        </div>
+
+        <!-- Company & Tools -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Tools & Info</h4>
+          <ul class="footer-links-list">
+            <li><a href="#/compare">Compare Bikes Tool</a></li>
+            <li><a href="#/reviews">Road Test Reviews</a></li>
+            <li><a href="#/about">About MotoReview</a></li>
+            <li><a href="#/contact">Contact Editorial Team</a></li>
+            <li><a href="#/contact">Dealer & Test Ride Support</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div>
+          © 2026 <strong>MotoReview India</strong>. All Rights Reserved. Crafted for Indian motorcycle riders.
+        </div>
+        <div style="display: flex; gap: 1.5rem;">
+          <span>Delhi</span>
+          <span>Mumbai</span>
+          <span>Bengaluru</span>
+          <span>Chennai</span>
+          <span>Pune</span>
+          <span>Hyderabad</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="data/bikes.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
